@@ -115,7 +115,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 ---
 
 ## **📜 License**  
-MIT License. See [LICENSE](LICENSE).  
+Apache 2.0 License. See [LICENSE](LICENSE).  
 
 ---
 

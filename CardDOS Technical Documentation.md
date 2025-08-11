@@ -133,7 +133,7 @@ xtensa-esp32s3-elf-gcc -nostdlib -Wl,--oformat=binary hello.S -o HELLO.COM
 ---
 
 **🔗 Repository**: [github.com/souzamonteiro/carddos](https://github.com/souzamonteiro/carddos)  
-**📝 License**: MIT.  
+**📝 License**: Apache 2.0.  
 
 *(Documentation last updated: October 2023. Continuous technical review.)*  
 
