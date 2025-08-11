@@ -12,6 +12,8 @@
 - 📁 **FAT32 filesystem** (microSD support).  
 - 🎮 **Assembly/C programs** (`.COM` binaries).  
 
+**ESP32-S3 Cardputer** documentation: <https://docs.m5stack.com/en/core/Cardputer>
+
 ---
 
 ## **✨ Features**  
