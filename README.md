@@ -29,10 +29,12 @@ carddos/
 ├── firmware/          # Kernel and bootloader
 │   ├── boot.S         # Bootloader (Xtensa ASM)
 │   └── kernel.c       # Syscall handlers
+|   └── syscalls.S     # Syscall functions
 ├── drivers/           # Hardware drivers
 │   ├── display/       # ST7789 (SPI+DMA)
 │   └── keyboard/      # GPIO matrix
 ├── programs/          # User programs (.COM)
+|   └── HELLO.S        # Hello World program
 ├── examples/          # Sample code
 └── docs/              # Pinouts, syscall docs
 ```
