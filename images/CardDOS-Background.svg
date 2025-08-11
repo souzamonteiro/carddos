@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="240"
+   height="135"
+   viewBox="0 0 63.499999 35.71875"
+   version="1.1"
+   id="svg119"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="CardDOS-Background.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview121"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.6107002"
+     inkscape:cx="80.089394"
+     inkscape:cy="85.98745"
+     inkscape:window-width="1302"
+     inkscape:window-height="699"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs116" />
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g2443"
+       transform="translate(0.55764387,0.05123194)">
+      <g
+         transform="matrix(0.0095085,0,0,0.0095085,22.773682,4.8154428)"
+         id="g4"
+         style="clip-rule:evenodd;fill-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5">
+        <path
+   d="m 1771.65,954.654 v 642.636 c 0,92.3 -70.96,167.98 -160.73,174.36 H 972.154 c 441.256,0 799.496,-358.24 799.496,-799.496 0,-5.869 -0.06,-11.723 -0.18,-17.5 z M 172.654,1771.62 c -3.021,-0.06 -6.021,-0.2 -8.996,-0.41 H 163 v -0.05 C 71.41,1764.38 -0.882,1687.83 -0.882,1594.53 V 177.562 C -0.882,79.806 78.483,0.441 176.239,0.441 H 1594.53 c 91.49,0 166.87,69.517 176.16,158.559 h 0.96 v 13.654 H 972.154 c -412.178,0 -751.923,312.583 -794.908,713.393 z M 1627.92,319.331 v 637.158 h -0.15 c 0.1,4.714 0.15,9.49 0.15,14.279 0,352.732 -280.56,640.462 -630.51,651.992 H 459.756 v -0.36 h -89.755 v 0.36 h -43.15 V 900.509 h 0.105 C 360.809,584.847 620.245,336.251 940.682,319.331 Z m -465.98,227.303 34.84,-34.841 c 111.1,111.1 156.77,263.01 137.02,407.632 8.09,4.765 15.72,10.62 22.66,17.565 44.24,44.235 44.24,116.06 0,160.3 -28.07,28.07 -67.26,38.33 -103.46,30.76 -16.4,23.73 -35.13,46.3 -56.22,67.39 -21.1,21.09 -43.66,39.82 -67.39,56.22 7.57,36.2 -2.69,75.39 -30.77,103.46 -44.23,44.24 -116.057,44.24 -160.292,0 -6.945,-6.94 -12.799,-14.56 -17.564,-22.66 -144.622,19.75 -296.532,-25.92 -407.632,-137.02 l 34.84,-34.84 c 0.996,1.01 1.99,2.02 2.99,3.02 169.436,169.43 444.557,169.43 613.988,0 169.44,-169.44 169.44,-444.561 0,-613.997 -1,-1 -2,-1.993 -3.01,-2.989 z"
+   style="fill:#f8e600;stroke:#000000;stroke-width:8.33px"
+   id="path2" />
+
+    </g>
+      <text
+         xml:space="preserve"
+         style="font-size:8.46667px;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#f8e600;fill-opacity:1;stroke:#000000;stroke-width:0.11;stroke-dasharray:none;stroke-opacity:1"
+         x="13.291633"
+         y="30.661364"
+         id="text264"><tspan
+           sodipodi:role="line"
+           id="tspan262"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:8.46667px;font-family:monospace;-inkscape-font-specification:'monospace Bold';fill:#f8e600;fill-opacity:1;stroke:#000000;stroke-width:0.11;stroke-dasharray:none;stroke-opacity:1"
+           x="13.291633"
+           y="30.661364">CardDOS</tspan></text>
+    </g>
+  </g>
+</svg>
