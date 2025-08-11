@@ -1,0 +1,8 @@
+graph TD
+    A[Bootloader] --> B[Kernel]
+    B --> C[Drivers]
+    C --> D[ST7789 Display]
+    C --> E[Matrix Keyboard]
+    C --> F[FAT32 Filesystem]
+    B --> G[Syscalls]
+    G --> H[.COM Applications]
