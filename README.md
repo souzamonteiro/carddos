@@ -1,7 +1,9 @@
 # **CardDOS**  
 *A DOS-Like OS for the ESP32-S3 Cardputer*  
 
-![CardDOS Banner](images/CardDOS.png) 
+<p align="center">
+  <img src="images/CardDOS-Logo.png" alt="CardDOS Banner" width="320">
+</p>
 
 ## **📌 Overview**  
 **CardDOS** is a minimalist DOS-like operating system for the **ESP32-S3 Cardputer**, blending retro simplicity with modern hardware:  
