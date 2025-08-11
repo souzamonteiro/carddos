@@ -105,7 +105,7 @@ xtensa-esp32s3-elf-gcc -nostdlib -Wl,--oformat=binary hello.S -o HELLO.COM
 
 ---
 
-## **📘 Documentation **
+## **📘 Documentation**
 
 - [CardDOS Technical Documentation](<CardDOS Technical Documentation.md>)
 - [Introdução à Programação para o Cardputer](<Introdução à Programação para o Cardputer.md>)
