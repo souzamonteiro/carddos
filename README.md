@@ -110,13 +110,11 @@ xtensa-esp32s3-elf-gcc -nostdlib -Wl,--oformat=binary hello.S -o HELLO.COM
 
 ## **📘 Documentation**
 
-- [CardDOS Technical Documentation](<CardDOS Technical Documentation.md>)
-- [Introdução à Programação para o Cardputer](<Introdução à Programação para o Cardputer.md>)
-- [Visão Geral do ESP32-S3](<Visão Geral do ESP32-S3.md>)
-- [Guia de Programação para Cardputer](<Guia de Programação para Cardputer.md>)
-- [Guia Avançado de Programação para Cardputer](<Guia Avançado de Programação para Cardputer.md>)
-- [Cheat Sheet - Assembly para ULP-RISC-V e ULP-FSM no ESP32-S3](<Cheat Sheet - Assembly para ULP-RISC-V e ULP-FSM no ESP32-S3.md>)
-- [Reference - Assembly Instructions of ESP32-S3](<Reference - Assembly Instructions of ESP32-S3.md>)
+- [CardDOS Technical Documentation](<docs/CardDOS Technical Documentation.md>)
+- [Visão Geral do ESP32-S3](<docs/Visão Geral do ESP32-S3.md>)
+- [Exemplos de Acesso a Hardwares do ESP32-S3 em Assembly](<docs/Exemplos de Acesso a Hardwares do ESP32-S3 em Assembly.md>)
+- [Cheat Sheet - Assembly para ULP-RISC-V e ULP-FSM no ESP32-S3](<docs/Cheat Sheet - Assembly para ULP-RISC-V e ULP-FSM no ESP32-S3.md>)
+- [Reference - Assembly Instructions of ESP32-S3](<docs/Reference - Assembly Instructions of ESP32-S3.md>)
 
 ---
 
