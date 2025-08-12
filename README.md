@@ -19,11 +19,11 @@
 ## **✨ Features**  
 | **Component**       | **Status** | **Details**                          |
 |---------------------|------------|--------------------------------------|
-| **Kernel**          | ✅         | Cooperative multitasking, syscalls   |
-| **Display Driver**  | ✅         | ST7789 (SPI, 135x240 RGB565)        |
-| **Keyboard Driver** | ✅         | GPIO matrix decoding                 |
+| **Kernel**          | 🚧         | Cooperative multitasking, syscalls   |
+| **Display Driver**  | 🚧         | ST7789 (SPI, 135x240 RGB565)        |
+| **Keyboard Driver** | 🚧         | GPIO matrix decoding                 |
 | **FAT32 Support**   | ⚠️         | Read-only (WIP: write support)       |
-| **Shell**           | 🚧         | Basic `CARDOM.COM` (in progress)     |
+| **Shell**           | 🚧         | Basic `SHELL.COM` (in progress)     |
 
 ---
 
@@ -33,6 +33,7 @@ carddos/
 ├── firmware/          # Kernel and bootloader
 │   ├── boot.S         # Bootloader (Xtensa ASM)
 │   └── kernel.c       # Syscall handlers
+│   └── shell.c        # Command prompt
 |   └── syscalls.S     # Syscall functions
 ├── drivers/           # Hardware drivers
 │   ├── display/       # ST7789 (SPI+DMA)
@@ -101,7 +102,7 @@ xtensa-esp32s3-elf-gcc -nostdlib -Wl,--oformat=binary hello.S -o HELLO.COM
 ---
 
 ## **🚧 Roadmap**  
-- **v0.1**: Basic shell (`CARDOM.COM`).  
+- **v0.1**: Basic shell (`SHELL.COM`).  
 - **v0.2**: File I/O (read/write).  
 - **v0.3**: Wi-Fi stack (HTTP, NTP).  
 
