@@ -17,7 +17,7 @@
 | **Kernel**           | Manages tasks, syscalls, and drivers.                                           |
 | **Drivers**          | Control hardware (display, keyboard, microSD).                                  |
 | **Syscalls**         | Interface between applications and kernel (e.g., `SYS_PRINT`, `SYS_READ`).      |
-| **Shell**            | Command interpreter (`CARDOM.COM`).                                             |
+| **Shell**            | Command interpreter (`SHELL.COM`).                                             |
 
 ---
 
@@ -50,7 +50,7 @@
    - Initializes basic hardware (SPI, GPIO).  
 2. **Kernel**:  
    - Configures syscalls and drivers.  
-   - Executes `CARDOM.COM`.
+   - Executes `SHELL.COM`.
 
 ### **4.2. Syscalls (System Calls)**
 | **Syscall** | **Assembly**                          | **Description**                     |
@@ -104,8 +104,8 @@ xtensa-esp32s3-elf-gcc -nostdlib -Wl,--oformat=binary hello.S -o HELLO.COM
 
 ## **7. Detailed Roadmap**
 ### **Phase 1: Core Functionality (v0.1)**
-- [x] Functional bootloader.  
-- [x] Display driver.  
+- [ ] Functional bootloader.  
+- [ ] Display driver.  
 - [ ] Shell (`CARDOM.COM`).  
 
 ### **Phase 2: Extensions (v0.2)**
