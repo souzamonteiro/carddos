@@ -483,3 +483,157 @@ x3 = 0x00000003
 ### **Como Estender**
 Para adicionar mais instruções (ex: `andi`, `jalr`), inclua novos casos na função `assemble()` seguindo o padrão dos tipos R/I/S/B/U/J.  
 
+Analisando os códigos finais do assembler e da VM RISC-V, vamos criar um conjunto abrangente de testes para validar todas as funcionalidades implementadas. Os programas de teste cobrirão:
+
+## Testes
+
+### 1. Testes Básicos Aritméticos
+**test_arithmetic.s**:
+```asm
+addi x1, x0, 5       # x1 = 5
+addi x2, x0, 3       # x2 = 3
+add x3, x1, x2       # x3 = 8 (5+3)
+sub x4, x1, x2       # x4 = 2 (5-3)
+xor x5, x1, x2       # x5 = 6 (5 XOR 3)
+addi a7, x0, 10      # syscall exit
+ecall
+```
+
+**Verificação esperada**:
+```
+x1 = 0x00000005
+x2 = 0x00000003 
+x3 = 0x00000008
+x4 = 0x00000002
+x5 = 0x00000006
+```
+
+### 2. Testes de Memória (Load/Store)
+**test_memory.s**:
+```asm
+addi sp, x0, 0x100   # sp = 0x100
+addi x1, x0, 0x1234  # x1 = 0x1234
+sw x1, 8(sp)         # Mem[0x108] = 0x1234
+lw x2, 8(sp)         # x2 = 0x1234
+addi a7, x0, 10
+ecall
+```
+
+**Verificação esperada**:
+```
+x1 = 0x00001234
+x2 = 0x00001234
+sp = 0x00000100
+```
+
+### 3. Testes de Controle de Fluxo
+**test_branch.s**:
+```asm
+addi x1, x0, 5
+addi x2, x0, 5
+beq x1, x2, label    # Deve pular
+addi x3, x0, 1       # Não executado
+label:
+addi x4, x0, 2       # x4 = 2
+addi a7, x0, 10
+ecall
+```
+
+**Verificação esperada**:
+```
+x1 = 0x00000005
+x2 = 0x00000005
+x3 = 0x00000000
+x4 = 0x00000002
+```
+
+### 4. Testes de Jump
+**test_jump.s**:
+```asm
+addi x1, x0, 1
+jal x10, target      # x10 = PC+4, jump para target
+addi x1, x0, 2       # Não executado
+target:
+addi x2, x0, 3
+addi a7, x0, 10
+ecall
+```
+
+**Verificação esperada**:
+```
+x1 = 0x00000001
+x2 = 0x00000003
+x10 = 0x0000000C (endereço da próxima instrução após jal)
+```
+
+### 5. Teste de Syscall
+**test_syscall.s**:
+```asm
+addi a0, x0, 42      # Valor de retorno
+addi a7, x0, 10      # Syscall exit
+ecall
+```
+
+**Verificação esperada**:
+```
+a0 = 0x0000002A
+a7 = 0x0000000A
+```
+
+### 6. Teste Completo (Combinação)
+**test_complex.s**:
+```asm
+addi sp, x0, 0x100
+lui x1, 0x12345      # x1 = 0x12345000
+addi x2, x0, 0x678
+add x3, x1, x2       # x3 = 0x12345678
+sw x3, 0(sp)
+lw x4, 0(sp)
+beq x3, x4, label
+addi x5, x0, 1       # Não executado
+label:
+addi a7, x0, 10
+ecall
+```
+
+**Verificação esperada**:
+```
+x1 = 0x12345000
+x3 = 0x12345678
+x4 = 0x12345678
+x5 = 0x00000000
+```
+
+### Procedimento de Teste:
+
+1. Para cada arquivo `.s`:
+```bash
+./riscv_assembler test_X.s test_X.bin
+./riscv_vm test_X.bin
+```
+
+2. Verifique:
+- Saída dos registradores
+- Mensagens de execução (PC e instruções)
+- Comportamento do programa
+
+### Testes Adicionais Recomendados:
+
+1. **Teste de Limites**:
+   - Valores máximos/minimos de imediatos
+   - Acesso a memória nos limites (0x000000 e 0xFFFFC)
+
+2. **Teste de Erros**:
+   - Instruções inválidas
+   - Registradores inválidos
+   - Acesso a memória não alinhado
+
+3. **Teste de Performance**:
+   - Loop com 1000 iterações
+   - Cálculo de Fibonacci (10 iterações)
+
+A implementação atual cobre:
+- Todas as instruções básicas do RV32I
+- Suporte a pseudo-instruções (via get_register)
+- Manipulação correta de endianness
+- Tratamento de syscall

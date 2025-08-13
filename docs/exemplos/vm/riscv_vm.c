@@ -26,7 +26,11 @@ uint32_t mem_read(CPU *cpu, uint32_t addr) {
         cpu->halted = 1;
         return 0;
     }
-    // Lê em little-endian
+    if (addr % 4 != 0) {
+        printf("Erro: Acesso desalinhado à memória (0x%08X)\n", addr);
+        cpu->halted = 1;
+        return 0;
+    }
     return (uint32_t)cpu->mem[addr] |
            ((uint32_t)cpu->mem[addr+1] << 8) |
            ((uint32_t)cpu->mem[addr+2] << 16) |
@@ -45,6 +49,13 @@ void mem_write(CPU *cpu, uint32_t addr, uint32_t data) {
 
 // Decodifica e executa uma instrução
 void execute(CPU *cpu, uint32_t instr) {
+    // Verificação de alinhamento
+    if (cpu->pc % 4 != 0) {
+        printf("Erro: PC desalinhado (0x%08X)\n", cpu->pc);
+        cpu->halted = 1;
+        return;
+    }
+    
     uint8_t opcode = instr & 0x7F;
     uint8_t funct3 = (instr >> 12) & 0x7;
     uint8_t funct7 = (instr >> 25) & 0x7F;
@@ -53,7 +64,11 @@ void execute(CPU *cpu, uint32_t instr) {
     uint8_t rs2 = (instr >> 20) & 0x1F;
     int32_t imm_i = (int32_t)(instr >> 20);
     int32_t imm_s = (int32_t)((instr >> 7) & 0x1F) | ((instr >> 25) << 5);
-    int32_t imm_b = ((instr >> 8) & 0xF) | ((instr >> 25) << 4) | ((instr >> 7) & 0x1) << 11 | ((instr >> 31) << 12);
+    int32_t imm_b = ((instr >> 8) & 0xF) | 
+                    ((instr >> 25) << 4) | 
+                    ((instr >> 7) & 0x1) << 11 | 
+                    ((instr >> 31) << 12);
+    imm_b = (imm_b << 19) >> 19;  // Sign-extend de 13 bits para 32 bits
     int32_t imm_u = instr & 0xFFFFF000;
     int32_t imm_j = ((instr >> 21) & 0x3FF) | ((instr >> 20) & 0x1) << 10 | ((instr >> 12) & 0xFF) << 11 | ((instr >> 31) << 20);
 
@@ -86,12 +101,16 @@ void execute(CPU *cpu, uint32_t instr) {
             break;
 
         // Instruções do tipo B (BEQ, BNE)
-        case 0x63:
-            switch (funct3) {
-                case 0x0: // BEQ
-                    if (cpu->reg[rs1] == cpu->reg[rs2]) cpu->pc += imm_b - 4;
-                    break;
-                // Adicione mais branches (BNE, BLT, etc.)...
+        case 0x63: // BEQ
+            if (cpu->reg[rs1] == cpu->reg[rs2]) {
+                // Extrai o offset corretamente (B-type)
+                int32_t imm = ((instr >> 8) & 0xF) |         // bits 11:8
+                            ((instr >> 25) << 4) |          // bits 10:5
+                            ((instr >> 7) & 0x1) << 11 |    // bit 11
+                            ((instr >> 31) << 12);          // bit 12
+                imm = (imm << 19) >> 19;  // Sign-extend de 13 bits
+                
+                cpu->pc += imm * 2 - 4;  // Multiplica por 2 (half-words) e ajusta PC
             }
             break;
 
