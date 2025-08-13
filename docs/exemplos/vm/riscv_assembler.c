@@ -34,7 +34,7 @@ void clean_line(char *line) {
 // Converte instrução para binário (suporta 12 instruções).
 uint32_t assemble(const char *op, const char *args) {
     uint32_t opcode = 0, rd = 0, rs1 = 0, rs2 = 0, imm = 0;
-    char rd_str[10], rs1_str[10], rs2_str[10];
+    char rd_str[10], rs1_str[10], rs2_str[10], imm_str[20];
 
     // No início da função assemble()
     if (strlen(args) == 0) {
@@ -42,24 +42,37 @@ uint32_t assemble(const char *op, const char *args) {
         exit(1);
     }
 
-    // Tipo R (add, sub, xor).
+    // Tipo R (add, sub, xor)
     if (strcmp(op, "add") == 0 || strcmp(op, "sub") == 0 || strcmp(op, "xor") == 0) {
-        sscanf(args, "x%d,x%d,x%d", &rd, &rs1, &rs2);
+        if (sscanf(args, "%[^,],%[^,],%s", rd_str, rs1_str, rs2_str) != 3) {
+            printf("Erro de sintaxe em: %s %s\n", op, args);
+            exit(1);
+        }
+        
+        rd = get_register(rd_str);
+        rs1 = get_register(rs1_str);
+        rs2 = get_register(rs2_str);
+        
         uint32_t funct7 = (strcmp(op, "sub") == 0) ? 0x20 : 0x00;
         uint32_t funct3 = 
-            (strcmp(op, "add") == 0) ? 0x0 :
-            (strcmp(op, "sub") == 0) ? 0x0 :
-            (strcmp(op, "xor") == 0) ? 0x4 : 0;
+            (strcmp(op, "add") == 0 ? 0x0 :
+            (strcmp(op, "sub") == 0 ? 0x0 :
+            (strcmp(op, "xor") == 0 ? 0x4 : 0)));
+            
         return (funct7 << 25) | (rs2 << 20) | (rs1 << 15) | (funct3 << 12) | (rd << 7) | 0x33;
     }
 
     // Tipo I (addi, lw)
     else if (strcmp(op, "addi") == 0 || strcmp(op, "lw") == 0) {
-        // Corrigido para capturar registradores e imediate corretamente
-        if (sscanf(args, "x%d,x%d,%d", &rd, &rs1, &imm) != 3) {
+        if (sscanf(args, "%[^,],%[^,],%s", rd_str, rs1_str, imm_str) != 3) {
             printf("Erro de sintaxe em: %s %s\n", op, args);
             exit(1);
         }
+        
+        rd = get_register(rd_str);
+        rs1 = get_register(rs1_str);
+        imm = atoi(imm_str);
+        
         uint32_t funct3 = (strcmp(op, "addi") == 0) ? 0x0 : 0x2;
         opcode = (strcmp(op, "addi") == 0) ? 0x13 : 0x03;
         return (imm << 20) | (rs1 << 15) | (funct3 << 12) | (rd << 7) | opcode;
